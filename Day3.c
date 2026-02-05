@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 int main() {
-    int n, i;
+    int n, i, k;
     int arr[100];
-    int left, right, temp;
+    int comparisons = 0;
+    int found = -1;
 
     scanf("%d", &n);
 
@@ -11,21 +12,24 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    left = 0;
-    right = n - 1;
-
-    while(left < right) {
-        temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
-
-        left++;
-        right--;
-    }
+    scanf("%d", &k);
 
     for(i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
+        comparisons++;
+        if(arr[i] == k) {
+            found = i;
+            break;
+        }
     }
+
+    if(found != -1) {
+        printf("Found at index %d\n", found);
+    } else {
+        printf("Not Found\n");
+    }
+
+    printf("Comparisons = %d", comparisons);
 
     return 0;
 }
+
